@@ -2,8 +2,9 @@ package com.epam.test.automation.java.practice4;
 
 import org.testng.annotations.Test;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.testng.AssertJUnit.assertFalse;
+import static org.testng.AssertJUnit.assertTrue;
+
 
 public class TestsTask1 {
 
