@@ -1,15 +1,35 @@
 package com.epam.test.automation.java.practice4;
 
+import java.util.EnumMap;
+import java.util.Map;
+
+import static com.epam.test.automation.java.practice4.SortOrder.ASC;
+import static com.epam.test.automation.java.practice4.SortOrder.DESC;
+
 public class Task1 {
 
-    /**
-     * <summary>
-     * Implement code according to description of task.
-     * </summary>
-     * if set invalid arguments in method, then method must throws
-     *  IllegalArgumentException
-     */
+    private Task1() {
+    }
+
+    private static final Map<SortOrder, OrderMap> ORDER_MAP = new EnumMap<>(SortOrder.class);
+
+    static {
+        ORDER_MAP.put(ASC, (int[] array, int i) -> array[i] > array[i + 1]);
+        ORDER_MAP.put(DESC, (int[] array, int i) -> array[i] < array[i + 1]);
+
+    }
+
     public static boolean isSorted(int[] array, SortOrder order) {
-        throw new UnsupportedOperationException();
+        for (int i = 0; i < array.length - 1; i++) {
+            var data = ORDER_MAP.get(order);
+            if (data.validate(array, i)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    interface OrderMap {
+        boolean validate(int[] array, int i);
     }
 }
