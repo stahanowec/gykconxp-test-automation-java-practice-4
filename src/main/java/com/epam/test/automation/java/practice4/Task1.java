@@ -20,13 +20,16 @@ public class Task1 {
     }
 
     public static boolean isSorted(int[] array, SortOrder order) {
-        for (int i = 0; i < array.length - 1; i++) {
-            var data = ORDER_MAP.get(order);
-            if (data.validate(array, i)) {
-                return false;
+        if (null != array && array.length > 0) {
+            for (int i = 0; i < array.length - 1; i++) {
+                var data = ORDER_MAP.get(order);
+                if (data.validate(array, i)) {
+                    return false;
+                }
             }
+            return true;
         }
-        return true;
+        throw new IllegalArgumentException();
     }
 
     interface OrderMap {

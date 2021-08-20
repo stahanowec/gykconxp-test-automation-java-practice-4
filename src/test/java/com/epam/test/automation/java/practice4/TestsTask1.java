@@ -2,6 +2,7 @@ package com.epam.test.automation.java.practice4;
 
 import org.testng.annotations.Test;
 
+import static org.testng.Assert.assertThrows;
 import static org.testng.AssertJUnit.assertFalse;
 import static org.testng.AssertJUnit.assertTrue;
 
@@ -38,4 +39,8 @@ public class TestsTask1 {
         assertTrue(result);
     }
 
+    @Test
+    public void ifTask1NPEThenIllegalArgument() {
+        assertThrows(IllegalArgumentException.class, ()-> Task1.isSorted(null, SortOrder.DESC));
+    }
 }
